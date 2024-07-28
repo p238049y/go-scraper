@@ -1,0 +1,14 @@
+version: '3' # composeファイルのバージョン
+services:
+  boiler-plate:
+    container_name: go-scraper
+    build:
+      context: .
+      dockerfile: ./build/Dockerfile
+    volumes: # マウントディレクトリ
+      - ./boiler-plate:/go/src/github.com/boiler-plate
+    tty: true
+    env_file:
+      - ./build/.go_env
+    environment:
+      - TZ=Asia/Tokyo
